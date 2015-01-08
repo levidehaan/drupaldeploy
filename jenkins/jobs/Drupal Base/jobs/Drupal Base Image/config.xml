@@ -65,16 +65,8 @@ CMD exec supervisord -n
 &quot; &gt; Dockerfile
 </command>
     </hudson.tasks.Shell>
-    <com.cloudbees.dockerpublish.DockerBuilder plugin="docker-build-publish@0.7">
-      <repoName>dockerimageserver.local:5000/$JOB</repoName>
-      <noCache>true</noCache>
-      <dockerfilePath>.</dockerfilePath>
-      <skipBuild>false</skipBuild>
-      <repoTag>&quot;$Version&quot;_&quot;$BUILD_NUMBER&quot;</repoTag>
-      <skipPush>true</skipPush>
-    </com.cloudbees.dockerpublish.DockerBuilder>
     <hudson.tasks.Shell>
-      <command>docker images</command>
+      <command>docker build -t drupalbaseimage .</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
