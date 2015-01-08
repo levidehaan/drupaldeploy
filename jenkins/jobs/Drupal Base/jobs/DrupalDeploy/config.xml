@@ -29,7 +29,7 @@
                 sudo docker kill DrupalInstance || :
                 sudo docker rm DrupalInstance || :
 
-                sudo docker run -d --name DB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cheesedoodles centurylink/mysql || :
+                sudo docker run -d --name DB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cheesedoodles -e MYSQL_USER=drupal -e MYSQL_PASSWORD=cheese -e MYSQL_DATABASE=drupal centurylink/mysql || :
 
                 sudo docker run -d --name DrupalInstance --link DB:DB -p 8081:80 drupalbaseimage || :
             </command>
