@@ -21,10 +21,13 @@ Run the following:
 * `./installVagrant.sh`
 * `./build.sh`
 
-To keep your files synced in your development project run: `vagrant rsync-auto`
+If you're using the desktop version and you want to keep your files synced in your development project run: `vagrant rsync-auto`
+
+Your database information is:
+
+Username: root <br/>
+password: cheesedoodles <br/>
+Host: DB (just DB, caps, in the host/ip area)
 
 ## In progress
-This project needs a couple more things before it does the deploy, right now it builds a docker container job as an example. Here is the Trello Board for this project: https://trello.com/b/HYuONrC1
-
-* It still needs to run the docker container.
-* It still needs to deploy the docker container locally.
+Finished!

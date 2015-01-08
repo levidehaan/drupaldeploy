@@ -1,2 +1,9 @@
 .idea
 .vagrant
+.java
+jenkins/plugins
+jenkins/secrets
+jenkins/war
+jenkins/updates
+jenkins/userContent
+jenkins/init.groovy.d
