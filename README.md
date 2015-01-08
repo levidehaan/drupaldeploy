@@ -5,11 +5,11 @@ You can use this to test our your drupal environment deploys using docker and th
 <br/>
 <br/>
 This project needs a couple more things before it does the deploy, right now it builds a docker container job as an example.
-
--It still needs to run the docker container
--It still needs to deploy the docker container locally
-
-These will be added next.
+<br/>
+-It still needs to run the docker container<br/>
+-It still needs to deploy the docker container locally<br/>
+<br/>
+These will be added next.<br/>
 <br/>
 <br/>
 To get started you can install Vagrant with the installVagrant.sh script.<br/>
