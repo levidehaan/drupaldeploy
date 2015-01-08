@@ -1,7 +1,8 @@
 Drupal Deploy
 ==============
 This is a drupal deploy development environment.
-You can use this to test our your drupal environment deploys using docker and then push those same images to a testing, QA, and then on to Producation.
+You can use this to test our your drupal environment deploys using docker and then push those same images to a testing, QA, and then on to Prod.
+<br/>
 <br/>
 To get started you can install Vagrant with the installVagrant.sh script.<br/>
 ./installVagrant.sh<br/>
