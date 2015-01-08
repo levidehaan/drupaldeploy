@@ -6,6 +6,8 @@ You can use this to test our your drupal environment deploys using docker and th
 <br/>
 This project needs a couple more things before it does the deploy, right now it builds a docker container job as an example.
 <br/>
+Here is the Trello Board for this project: https://trello.com/b/HYuONrC1
+<br/>
 -It still needs to run the docker container<br/>
 -It still needs to deploy the docker container locally<br/>
 <br/>
