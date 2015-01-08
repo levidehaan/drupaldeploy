@@ -42,21 +42,27 @@
         #to save time I am just going to use existing images for most of this.
         #for the real system we&apos;d want to have a real image store of our very own.
         FROM centurylink/apache-php:latest
+        MAINTAINER CenturyLink
 
-        RUN DEBIAN_FRONTEND=noninteractive apt-get update -y; apt-get upgrade -y; apt-get dist-upgrade -y;
+        # Install packages
+        RUN apt-get update &amp;&amp; DEBIAN_FRONTEND=noninteractive apt-get -y upgrade &amp;&amp; \
+        DEBIAN_FRONTEND=noninteractive apt-get -y install supervisor pwgen &amp;&amp; \
+        apt-get -y install mysql-client &amp;&amp; \
+        apt-get -y install postgresql-client
 
+        # Download v7.34 of Drupal into /app
+        RUN rm -fr /app &amp;&amp; mkdir /app &amp;&amp; cd /app &amp;&amp; \
+        curl -O http://ftp.drupal.org/files/projects/drupal-7.34.tar.gz &amp;&amp; \
+        tar -xzvf drupal-7.34.tar.gz &amp;&amp; \
+        rm drupal-7.34.tar.gz &amp;&amp; \
+        mv drupal-7.34/* drupal-7.34/.htaccess ./ &amp;&amp; \
+        mv drupal-7.34/.gitignore ./ &amp;&amp; \
+        rmdir drupal-7.34
 
-        RUN DEBIAN_FRONTEND=noninteractive apt-get -y install supervisor pwgen mysql-client postgresql-client
-
-        RUN rm -fr /app; mkdir /app;
-
-        WORKDIR /app
-
-        ADD http://ftp.drupal.org/files/projects/$Version.tar.gz
-
-        RUN tar -xzvf $Version.tar.gz; rm $Version.tar.gz; mv $Version/* $Version/.htaccess ./; mv $Version/.gitignore ./; rmdir $Version
-
-        RUN cp app/sites/default/default.settings.php app/sites/default/settings.php; chmod a+w app/sites/default/settings.php; chmod a+w app/sites/default
+        #Config and set permissions for setting.php
+        RUN cp app/sites/default/default.settings.php app/sites/default/settings.php &amp;&amp; \
+        chmod a+w app/sites/default/settings.php &amp;&amp; \
+        chmod a+w app/sites/default
 
         EXPOSE 80
 
