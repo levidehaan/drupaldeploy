@@ -60,9 +60,9 @@ chown jenkins:jenkins /var/lib/jenkins -R
 #jenkins jobs
 rm /var/lib/jenkins/jobs -rf
 ln -s /jenkins/jobs /var/lib/jenkins/jobs
-chown jenkins:jenkins /var/lib/jenkins -R
-sudo jchown jenkins:jenkins /jenkins -R
-chown jenkins:jenkins -R /development
+sudo chown jenkins:jenkins /var/lib/jenkins -R
+sudo chown jenkins:jenkins /jenkins -R
+sudo chown jenkins:jenkins -R /development
 
 echo '%jenkins ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
