@@ -24,9 +24,9 @@
     <concurrentBuild>false</concurrentBuild>
     <builders>
         <hudson.tasks.Shell>
-            <command>
-                docker run -d --name DB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cheesedoodles centurylink/mysqlconfig.vm.network "forwarded_port", guest: 8080, host: 8080
-                docker run -d --name Drupalinstance --link DB:DB -p 8081:80 drupalbaseimage
+            <command>sudo docker run -d --name DB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cheesedoodles centurylink/mysql
+
+                sudo docker run -d --name Drupalinstance --link DB:DB -p 8081:80 drupalbaseimage
             </command>
         </hudson.tasks.Shell>
         <hudson.tasks.Shell>

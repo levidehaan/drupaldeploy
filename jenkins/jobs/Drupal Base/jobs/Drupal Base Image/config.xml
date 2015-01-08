@@ -39,31 +39,31 @@
   <builders>
     <hudson.tasks.Shell>
       <command>echo &quot;
-#to save time I am just going to use existing images for most of this.
-#for the real system we&apos;d want to have a real image store of our very own.
-FROM centurylink/apache-php:latest
+        #to save time I am just going to use existing images for most of this.
+        #for the real system we&apos;d want to have a real image store of our very own.
+        FROM centurylink/apache-php:latest
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update -y; apt-get upgrade -y; apt-get dist-upgrade -y; 
+        RUN DEBIAN_FRONTEND=noninteractive apt-get update -y; apt-get upgrade -y; apt-get dist-upgrade -y;
 
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install supervisor pwgen mysql-client postgresql-client
+        RUN DEBIAN_FRONTEND=noninteractive apt-get -y install supervisor pwgen mysql-client postgresql-client
 
-RUN rm -fr /app; mkdir /app; 
+        RUN rm -fr /app; mkdir /app;
 
-WORKDIR /app
+        WORKDIR /app
 
-ADD http://ftp.drupal.org/files/projects/$Version.tar.gz
+        ADD http://ftp.drupal.org/files/projects/$Version.tar.gz
 
-RUN tar -xzvf $Version.tar.gz; rm $Version.tar.gz; mv $Version/* $Version/.htaccess ./; mv $Version/.gitignore ./; rmdir $Version
+        RUN tar -xzvf $Version.tar.gz; rm $Version.tar.gz; mv $Version/* $Version/.htaccess ./; mv $Version/.gitignore ./; rmdir $Version
 
-RUN cp app/sites/default/default.settings.php app/sites/default/settings.php; chmod a+w app/sites/default/settings.php; chmod a+w app/sites/default
+        RUN cp app/sites/default/default.settings.php app/sites/default/settings.php; chmod a+w app/sites/default/settings.php; chmod a+w app/sites/default
 
-EXPOSE 80
+        EXPOSE 80
 
-CMD exec supervisord -n
+        CMD exec supervisord -n
 
-&quot; &gt; Dockerfile
-</command>
+        &quot; &gt; Dockerfile
+      </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>sudo docker build -t drupalbaseimage .</command>
