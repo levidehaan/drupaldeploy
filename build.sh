@@ -138,6 +138,7 @@ function add_intellij() {
 	  close this window.\n there is a log that you can view when it is finished. \n \
 	  this can take a long time. be patient. :)" 40 90
 
+	sed -e 's/gui = false/gui = true/g' Vagrantfiledefaultstuff
 	vagrant reload
 	export FACTER_options='intellij';
 	vagrant provision 2>&1 | tee output.log
@@ -154,6 +155,8 @@ function install() {
 	  --infobox "please wait while the vm is built and installed the job will start once you\
 	   close this window.\n there is a log that you can view when it is finished. \n \
 	   this can take a long time. be patient. :)" 40 90
+
+	sed -e 's/gui = true/gui = false/g' Vagrantfile
 
 	export FACTER_options='none';
 	vagrant up 2>&1 | tee output.log
@@ -268,7 +271,7 @@ StartVM "After you've installed use this to start" \
 StopVM "Use this to shutdown your VM until later" \
 RestartVM "Restart the VM this way remaps the synced folders" \
 VagrantPlugins "Install the virtualbox guest additions manager" \
-VMInstall "install vm with base options" \
+VMInstall "install vm with base options <HEADLESS>" \
 Clean "Wipe out all the things and start fresh" \
 Intellij "install vm with intellij" \
 provisionIntellij "provision vm with intellij" \

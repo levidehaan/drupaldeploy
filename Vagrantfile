@@ -21,7 +21,7 @@ chown vagrant:vagrant /home/vagrant/Desktop
 #changing mirror location to a nearby location
 sed -i -e 's/archive.ubuntu.com\|security.ubuntu.com/mirror.nexcess.net/g' /etc/apt/sources.list
 
-#install these packages now 
+#install these packages now
 sudo apt-get install unzip git libpango1.0-dev curl wget net-tools -y --force-yes
 
 #install these puppet modules
@@ -62,12 +62,12 @@ rm /var/lib/jenkins/jobs -rf
 ln -s /jenkins/jobs /var/lib/jenkins/jobs
 chown jenkins:jenkins /var/lib/jenkins -R
 chown jenkins:jenkins /jenkins -R
-chown vagrant:vagrant -R /development
+chown jenkins:jenkins -R /development
 
 echo '%jenkins ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 echo "Completed Setup!"
-
+echo "Go to http://localhost:8080/ to access jenkins"
 SCRIPT
 
 VAGRANTFILE_API_VERSION = "2"
@@ -85,12 +85,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.hostname = "DrupalDevEnv"
 
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
+  config.vm.network "forwarded_port", guest: 8081, host: 8081
+
   config.vm.provider :virtualbox do |vb, override|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
     vb.customize ["modifyvm", :id, "--ioapic", "on"]
 
-    vb.gui = true
+    vb.gui = false
 
     vb.customize ["modifyvm", :id, "--memory", 4098]
     vb.customize ["modifyvm", :id, "--cpus", 4]
