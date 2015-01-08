@@ -9,7 +9,7 @@ You can also ssh into your machine and play with docker directly with vagrant ss
 The second mode enables the desktop, just select the intellij build option from the menu <br/>
 if you want to enable desktop but you're not using the GUI in build.sh run:<br/><br/>
 ````
-    sed -e s/gui = false/gui = true/g Vagrantfile > Vagrantfile
+    sed -e 's/gui = false/gui = true/g' Vagrantfile
 ````
 <br/><br/>
 This project needs a couple more things before it does the deploy, right now it builds a docker container job as an example.
