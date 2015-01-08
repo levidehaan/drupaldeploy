@@ -29,7 +29,7 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Darwin" ]; then
       echo -e "vagrant not found! Install? (y/n) \c"
       read
     if "$REPLY" = "y"; then
-      wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3.dmg
+      wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2.dmg
       hdiutil mount vagrant_1.6.3.dmg
     fi
   fi        
@@ -38,7 +38,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     echo -e "vagrant not found! Install? (y/n) \c"
     read
     if "$REPLY" = "y"; then
-       wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
+       wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2_x86_64.deb
        sudo dpkg -i vagrant_1.6.3_x86_64.deb
     fi
   fi
@@ -48,7 +48,7 @@ elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
     echo -e "vagrant not found! Install? (y/n) \c"
     read
     if "$REPLY" = "y"; then
-       wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3.msi
+       wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2.msi
        msiexec /I vagrant_1.6.3.msi
     fi
   fi
