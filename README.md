@@ -1,6 +1,5 @@
 Drupal Deploy
 ==============
-First run init.sh which will grab the requisite vagrant package<br/>
 <br/>
 You can install Vagrant with the installVagrant.sh script.<br/>
 ./installVagrant.sh<br/>
