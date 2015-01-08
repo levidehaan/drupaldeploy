@@ -138,7 +138,8 @@ function add_intellij() {
 	  close this window.\n there is a log that you can view when it is finished. \n \
 	  this can take a long time. be patient. :)" 40 90
 
-	sed -e 's/gui = false/gui = true/g' Vagrantfiledefaultstuff
+	sed -e 's/gui = false/gui = true/g' Vagrantfile
+	sed -e 's/#brackURL/URL/g' Vagrantfile
 	vagrant reload
 	export FACTER_options='intellij';
 	vagrant provision 2>&1 | tee output.log

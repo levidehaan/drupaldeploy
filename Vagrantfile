@@ -47,7 +47,7 @@ docker run --rm -v /usr/local/bin:/target jpetazzo/nsenter
 pip install fig
 
 #installing Brackets
-URL='https://github.com/adobe/brackets/releases/download/release-1.1%2Beb4/Brackets.1.1.Extract.64-bit.deb'; FILE=`mktemp`; wget "$URL" -qO $FILE && sudo dpkg -i $FILE; rm $FILE
+#brackURL='https://github.com/adobe/brackets/releases/download/release-1.1%2Beb4/Brackets.1.1.Extract.64-bit.deb'; FILE=`mktemp`; wget "$URL" -qO $FILE && sudo dpkg -i $FILE; rm $FILE
 
 #Desktop has been installed change ownership of files
 chown vagrant:vagrant -R /home/vagrant/Desktop
@@ -61,7 +61,7 @@ chown jenkins:jenkins /var/lib/jenkins -R
 rm /var/lib/jenkins/jobs -rf
 ln -s /jenkins/jobs /var/lib/jenkins/jobs
 chown jenkins:jenkins /var/lib/jenkins -R
-chown jenkins:jenkins /jenkins -R
+sudo jchown jenkins:jenkins /jenkins -R
 chown jenkins:jenkins -R /development
 
 echo '%jenkins ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
@@ -76,7 +76,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.synced_folder "./development", "/development", type: "rsync"
   config.vm.synced_folder "./puppet", "/puppet", type: "rsync"
-  config.vm.synced_folder "./jenkins", "/jenkins", type: "rsync", rsync__exclude: ".git"
+  config.vm.synced_folder "./jenkins", "/jenkins", type: "rsync", owner: "jenkins", group: "jenkins"
 
   config.vm.box = "ubuntuphusion"
   config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
