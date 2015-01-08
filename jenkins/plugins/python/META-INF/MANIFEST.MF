@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: kohsuke
+Build-Jdk: 1.6.0_20
+Extension-Name: python
+Implementation-Title: python
+Implementation-Version: 1.2
+Group-Id: org.jenkins-ci.plugins
+Short-Name: python
+Long-Name: Python Plugin
+Url: http://wiki.jenkins-ci.org/display/JENKINS/Python+Plugin
+Plugin-Version: 1.2
+Hudson-Version: 1.409
+Jenkins-Version: 1.409
+Plugin-Developers: R. Tyler Ballance:rtyler:tyler@slide.com
+

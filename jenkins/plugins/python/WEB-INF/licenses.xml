@@ -1,0 +1,5 @@
+<l:dependencies xmlns:l='licenses'>
+  <l:dependency name='Python Plugin' groupId='org.jenkins-ci.plugins' artifactId='python' version='1.2' url='http://wiki.jenkins-ci.org/display/JENKINS/Python+Plugin'>
+    <l:description />
+  </l:dependency>
+</l:dependencies>

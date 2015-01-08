@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: rcampbell
+Build-Jdk: 1.6.0_19
+Extension-Name: sbt
+Specification-Title: Build your scala project using sbt in Jenkins
+Implementation-Title: sbt
+Implementation-Version: 1.4
+Group-Id: org.jenkins-ci.plugins
+Short-Name: sbt
+Long-Name: Jenkins sbt plugin
+Url: http://wiki.jenkins-ci.org/display/JENKINS/sbt+plugin
+Plugin-Version: 1.4
+Hudson-Version: null
+Plugin-Developers: Uzi Landsmann:uzilan:uzi.landsmann@gmail.com
+

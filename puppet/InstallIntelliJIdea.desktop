@@ -1,0 +1,20 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=ksystraycmd /puppet/intellijinst.sh
+GenericName[en_US]=
+GenericName=
+Icon=ModemManager
+MimeType=
+Name[en_US]=install IntelliJ
+Name=install IntelliJ
+NoDisplay=false
+Path=
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

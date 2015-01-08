@@ -1,0 +1,14 @@
+[Desktop Entry]
+Comment=
+Exec=ksystraycmd /usr/bin/brackets
+GenericName=Brackets IDE
+Icon=/usr/share/icons/hicolor/scalable/apps/brackets.svg
+Name=Brackets
+NoDisplay=false
+Path[$e]=
+StartupNotify=true
+Terminal=0
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=

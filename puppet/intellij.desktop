@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=ksystraycmd /home/vagrant/ideaIU/idea-IU-135.1230/bin/idea.sh
+Icon=/home/vagrant/ideaIU/idea-IU-135.1230/bin/idea.png
+Name[en_US]=IntelliJIdea
+Name=IntelliJIdea
+NoDisplay=false
+StartupNotify=true
+Terminal=true
+Type=Application
+X-KDE-SubstituteUID=false

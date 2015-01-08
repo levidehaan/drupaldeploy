@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Base Image</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Version</name>
+          <description>Please select a drupal version for use</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>drupal-7.34</string>
+              <string>drupal-6.34</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+    <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.2">
+      <room></room>
+      <startNotification>false</startNotification>
+      <notifySuccess>false</notifySuccess>
+      <notifyAborted>false</notifyAborted>
+      <notifyNotBuilt>false</notifyNotBuilt>
+      <notifyUnstable>false</notifyUnstable>
+      <notifyFailure>false</notifyFailure>
+      <notifyBackToNormal>false</notifyBackToNormal>
+    </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>echo &quot;
+#to save time I am just going to use existing images for most of this.
+#for the real system we&apos;d want to have a real image store of our very own.
+FROM centurylink/apache-php:latest
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get update -y; apt-get upgrade -y; apt-get dist-upgrade -y; 
+
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install supervisor pwgen mysql-client postgresql-client
+
+RUN rm -fr /app; mkdir /app; 
+
+WORKDIR /app
+
+ADD http://ftp.drupal.org/files/projects/$Version.tar.gz
+
+RUN tar -xzvf $Version.tar.gz; rm $Version.tar.gz; mv $Version/* $Version/.htaccess ./; mv $Version/.gitignore ./; rmdir $Version
+
+RUN cp app/sites/default/default.settings.php app/sites/default/settings.php; chmod a+w app/sites/default/settings.php; chmod a+w app/sites/default
+
+EXPOSE 80
+
+CMD exec supervisord -n
+
+&quot; &gt; Dockerfile
+</command>
+    </hudson.tasks.Shell>
+    <com.cloudbees.dockerpublish.DockerBuilder plugin="docker-build-publish@0.7">
+      <repoName>dockerimageserver.local:5000/$JOB</repoName>
+      <noCache>true</noCache>
+      <dockerfilePath>.</dockerfilePath>
+      <skipBuild>false</skipBuild>
+      <repoTag>&quot;$Version&quot;_&quot;$BUILD_NUMBER&quot;</repoTag>
+      <skipPush>true</skipPush>
+    </com.cloudbees.dockerpublish.DockerBuilder>
+    <hudson.tasks.Shell>
+      <command>docker images</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

@@ -1,0 +1,14 @@
+[Desktop Entry]
+Comment=
+Exec=google-chrome "http://localhost:8080/"
+GenericName=OPEN JENKINS
+Icon=applications-science
+Name=Open Jenkins
+NoDisplay=false
+Path[$e]=
+StartupNotify=true
+Terminal=0
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=

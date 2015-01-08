@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: michaelneale
+Build-Jdk: 1.6.0_65
+Extension-Name: docker-build-publish
+Specification-Title: This plugin builds Dockerfile based projects and 
+ publishes them to the docker registry.
+Implementation-Title: docker-build-publish
+Implementation-Version: 0.7
+Group-Id: org.jenkins-ci.plugins
+Short-Name: docker-build-publish
+Long-Name: Docker Build and Publish plugin
+Url: https://github.com/jenkinsci/docker-build-publish-plugin/blob/mas
+ ter/README.md
+Plugin-Version: 0.7
+Hudson-Version: 1.554.2
+Jenkins-Version: 1.554.2
+Plugin-Dependencies: token-macro:1.10
+Plugin-Developers: 
+
