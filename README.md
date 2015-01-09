@@ -17,9 +17,9 @@ sed -e 's/gui = false/gui = true/g' Vagrantfile
 
 ## Installation
 Run the following:
-`git checkout git@github.com:levidehaan/drupaldeploy.git`
-`./installVagrant.sh (this is primarily for mac's)`
-`./build.sh`
+* `git checkout git@github.com:levidehaan/drupaldeploy.git`
+* `./installVagrant.sh (this is primarily for mac's, you can use these tools on MLW )`
+* `./build.sh`
 
 If you have a problem running installVagrant.sh here is a list of what it installs and how to install by hand:
 
@@ -28,7 +28,8 @@ Install homebrew if it's not installed:
 `ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
 
 
-Install a lib called dialog using this command:
+Install a lib called [Dialog](http://hightek.org/projects/dialog/ "Dialog") using this command:<br/>
+<i>You may be able to install this on windows, but it'd be a bit of a pita.</i>
 
 `brew install dialog`
 
@@ -64,7 +65,7 @@ Once you get to the database setup your database information is (you can use roo
 
 Username: root -|- drupal<br/>
 password: cheesedoodles -|- cheese<br/>
-Host: DB (just DB, caps, in the host/ip area)
+Host: DB (just type DB in the host/ip area, it will use the env var passed by --link)
 
 ## In progress
 
