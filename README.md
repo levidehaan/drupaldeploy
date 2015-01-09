@@ -17,17 +17,59 @@ sed -e 's/gui = false/gui = true/g' Vagrantfile
 
 ## Installation
 Run the following:
-* `git checkout git@github.com:levidehaan/drupaldeploy.git`
-* `./installVagrant.sh`
-* `./build.sh`
+`git checkout git@github.com:levidehaan/drupaldeploy.git`
+`./installVagrant.sh (this is primarily for mac's)`
+`./build.sh`
 
-If you're using the desktop version and you want to keep your files synced in your development project run: `vagrant rsync-auto`
+If you have a problem running installVagrant.sh here is a list of what it installs and how to install by hand:
 
-Your database information is:
+Install homebrew if it's not installed:
 
-Username: root <br/>
-password: cheesedoodles <br/>
+`ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
+
+
+Install a lib called dialog using this command:
+
+`brew install dialog`
+
+Install a tool called wget
+
+`brew install wget`
+
+it then installs vagrant if it's not installed using this command (I've included all 3 operating systems):
+
+Mac:
+
+`wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2.dmg`
+`hdiutil mount vagrant_1.6.3.dmg`
+
+Linux (Debian):
+
+`wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2_x86_64.deb`
+`sudo dpkg -i vagrant_1.6.3_x86_64.deb`
+
+Windows:
+
+`wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2.msi`
+`msiexec /I vagrant_1.6.3.msi`
+
+
+## Setting up Drupal
+
+Once you have built your docker container and run the deploy go to
+
+http://localhost:8080/
+
+Once you get to the database setup your database information is (you can use root user or drupal user):
+
+Username: root -|- drupal<br/>
+password: cheesedoodles -|- cheese<br/>
 Host: DB (just DB, caps, in the host/ip area)
 
 ## In progress
-Finished!
+
+Finished! for now...
+
+## Misc
+
+If you're using the desktop version and you want to keep your files synced in your development project run: `vagrant rsync-auto`
