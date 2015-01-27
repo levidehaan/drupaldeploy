@@ -1,40 +1,41 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
-    <actions/>
-    <description>Deploy Drupal Image</description>
-    <keepDependencies>false</keepDependencies>
-    <properties>
-        <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.2">
-            <room></room>
-            <startNotification>false</startNotification>
-            <notifySuccess>false</notifySuccess>
-            <notifyAborted>false</notifyAborted>
-            <notifyNotBuilt>false</notifyNotBuilt>
-            <notifyUnstable>false</notifyUnstable>
-            <notifyFailure>false</notifyFailure>
-            <notifyBackToNormal>false</notifyBackToNormal>
-        </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
-    </properties>
-    <scm class="hudson.scm.NullSCM"/>
-    <canRoam>true</canRoam>
-    <disabled>false</disabled>
-    <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-    <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-    <triggers/>
-    <concurrentBuild>false</concurrentBuild>
-    <builders>
-        <hudson.tasks.Shell>
-            <command>sudo docker kill DB || :
-                sudo docker rm DB || :
-                sudo docker kill DrupalInstance || :
-                sudo docker rm DrupalInstance || :
-
-                sudo docker run -d --name DB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cheesedoodles -e MYSQL_USER=drupal -e MYSQL_PASSWORD=cheese -e MYSQL_DATABASE=drupal centurylink/mysql || :
-
-                sudo docker run -d --name DrupalInstance --link DB:DB -p 8081:80 drupalbaseimage || :
+  <actions/>
+  <description>Deploy Drupal Image</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <jenkins.plugins.slack.SlackNotifier_-SlackJobProperty plugin="slack@1.2">
+      <room></room>
+      <startNotification>false</startNotification>
+      <notifySuccess>false</notifySuccess>
+      <notifyAborted>false</notifyAborted>
+      <notifyNotBuilt>false</notifyNotBuilt>
+      <notifyUnstable>false</notifyUnstable>
+      <notifyFailure>false</notifyFailure>
+      <notifyBackToNormal>false</notifyBackToNormal>
+    </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>sudo docker kill DB || :
+sudo docker rm DB || :
+sudo docker kill DrupalInstance || :
+sudo docker rm DrupalInstance || :
+sudo docker run -d --name DB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cheesedoodles -e MYSQL_USER=drupal -e MYSQL_PASSWORD=cheese -e MYSQL_DATABASE=drupal centurylink/mysql || :
+sudo docker run -d --name DrupalInstance --link DB:DB -p 8081:80 drupalbaseimage || :
             </command>
-        </hudson.tasks.Shell>
-    </builders>
-    <publishers/>
-    <buildWrappers/>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>sudo docker ps</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
 </project>

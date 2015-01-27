@@ -53,16 +53,17 @@ pip install fig
 chown vagrant:vagrant -R /home/vagrant/Desktop
 
 #jenkins plugins
-chown jenkins:jenkins /jenkins -R
-cp /jenkins/plugins/* /var/lib/jenkins/plugins/ -R
-chown jenkins:jenkins /var/lib/jenkins -R
+//chown jenkins:jenkins /jenkins -R
+//cp /jenkins/plugins/* /var/lib/jenkins/plugins/ -R
+//chown jenkins:jenkins /var/lib/jenkins -R
 
 #jenkins jobs
-rm /var/lib/jenkins/jobs -rf
-ln -s /jenkins/jobs /var/lib/jenkins/jobs
+//rm /var/lib/jenkins/jobs -rf
+//ln -s /jenkins/jobs /var/lib/jenkins/jobs
+//sudo chmod a+rw /var/lib/jenkins
 sudo chown jenkins:jenkins /var/lib/jenkins -R
-sudo chown jenkins:jenkins /jenkins -R
-sudo chown jenkins:jenkins -R /development
+//sudo chown jenkins:jenkins /jenkins -R
+//sudo chown jenkins:jenkins -R /development
 
 echo '%jenkins ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
@@ -74,9 +75,9 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.synced_folder "./development", "/development", type: "rsync"
+  config.vm.synced_folder "./development", "/development"
   config.vm.synced_folder "./puppet", "/puppet", type: "rsync"
-  config.vm.synced_folder "./jenkins", "/jenkins", type: "rsync", owner: "jenkins", group: "jenkins"
+  config.vm.synced_folder "./jenkins", "/var/lib/jenkins", type: "rsync", owner: "jenkins", group: "jenkins"
 
   config.vm.box = "ubuntuphusion"
   config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"

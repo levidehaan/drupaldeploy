@@ -72,4 +72,15 @@ Finished! for now...
 
 ## Misc
 
-If you're using the desktop version and you want to keep your files synced in your development project run: `vagrant rsync-auto`
+If you want to keep your files in puppet and jenkins synced to the guest; run: `vagrant rsync-auto`
+
+I would also recommend installing the plugin [Vagrant-Rsync-Back](https://github.com/smerrill/vagrant-rsync-back):
+
+Install: `vagrant plugin install vagrant-rsync-back`<br/>
+Usage: `vagrant rsync-back`
+
+This will enable you to sync changes back to the host machine once you're happy with your changes on the guest.
+
+Currently the only folder that syncs both ways automatically is the develoment folder (it is really slow).
+
+The Jenkins and Puppet folders are rsynced one way to the guest operating system. If you use vagrant-rsync-back you can sync back to the host.

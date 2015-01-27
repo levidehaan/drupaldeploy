@@ -50,14 +50,14 @@
         apt-get -y install mysql-client &amp;&amp; \
         apt-get -y install postgresql-client
 
-        # Download v7.34 of Drupal into /app
+        # Download $Version into /app
         RUN rm -fr /app &amp;&amp; mkdir /app &amp;&amp; cd /app &amp;&amp; \
-        curl -O http://ftp.drupal.org/files/projects/drupal-7.34.tar.gz &amp;&amp; \
-        tar -xzvf drupal-7.34.tar.gz &amp;&amp; \
-        rm drupal-7.34.tar.gz &amp;&amp; \
-        mv drupal-7.34/* drupal-7.34/.htaccess ./ &amp;&amp; \
-        mv drupal-7.34/.gitignore ./ &amp;&amp; \
-        rmdir drupal-7.34
+        curl -O http://ftp.drupal.org/files/projects/$Version.tar.gz &amp;&amp; \
+        tar -xzvf $Version.tar.gz &amp;&amp; \
+        rm $Version.tar.gz &amp;&amp; \
+        mv $Version/* $Version/.htaccess ./ &amp;&amp; \
+        mv $Version/.gitignore ./ &amp;&amp; \
+        rmdir $Version
 
         #Config and set permissions for setting.php
         RUN cp app/sites/default/default.settings.php app/sites/default/settings.php &amp;&amp; \
